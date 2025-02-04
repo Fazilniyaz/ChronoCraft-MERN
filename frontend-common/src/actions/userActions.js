@@ -79,10 +79,10 @@ export const login = (email, password) => async (dispatch) => {
       //   position: "bottom-center",
       // });
     }
-    if (err.trim() !== "") {
-      console.log("Helo");
-      toast("Fazil");
-    }
+    // if (err.trim() !== "") {
+    //   console.log("Helo");
+    //   toast("Fazil");
+    // }
   } else {
     console.log("GOogleSignin triggered");
     try {
