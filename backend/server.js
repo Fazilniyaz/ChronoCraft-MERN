@@ -19,7 +19,33 @@ const app = require("./app");
 app.use(
   cors({
     origin: "http://localhost:5173", // Allow frontend origin
-    methods: ["GET", "POST"], // Allowed HTTP methods
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
+    credentials: true, // If cookies or auth headers are needed
+  })
+);
+// Middleware
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Allow frontend origin
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
+    credentials: true, // If cookies or auth headers are needed
+  })
+);
+
+// Middleware
+app.use(
+  cors({
+    origin: "http://chronocrafts.xyz", // Allow frontend origin
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
+    credentials: true, // If cookies or auth headers are needed
+  })
+);
+
+// Middleware
+app.use(
+  cors({
+    origin: "https://chronocrafts.xyz", // Allow frontend origin
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
     credentials: true, // If cookies or auth headers are needed
   })
 );
