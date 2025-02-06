@@ -14,39 +14,17 @@ dotenv.config({ path: path.join(__dirname, "config/config.env") });
 connectDatabase();
 
 const app = require("./app");
-
-// Middleware
+// CORS Configuration
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow frontend origin
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
-    credentials: true, // If cookies or auth headers are needed
-  })
-);
-// Middleware
-app.use(
-  cors({
-    origin: "http://localhost:3000", // Allow frontend origin
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
-    credentials: true, // If cookies or auth headers are needed
-  })
-);
-
-// Middleware
-app.use(
-  cors({
-    origin: "http://chronocrafts.xyz", // Allow frontend origin
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
-    credentials: true, // If cookies or auth headers are needed
-  })
-);
-
-// Middleware
-app.use(
-  cors({
-    origin: "https://chronocrafts.xyz", // Allow frontend origin
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed HTTP methods
-    credentials: true, // If cookies or auth headers are needed
+    origin: [
+      "https://chronocrafts.xyz",
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "http://chronocrafts.xyz",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
   })
 );
 
