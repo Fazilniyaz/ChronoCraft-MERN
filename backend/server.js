@@ -59,14 +59,14 @@ const Server = app.listen(PORT, () => {
   );
 });
 
-const _dirname = __dirname;
-const buildpath = path.join(_dirname, "../frontend-common/build");
-app.use(express.static(buildpath));
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+// const _dirname = __dirname;
+// const buildpath = path.join(_dirname, "../frontend-common/build");
+// app.use(express.static(buildpath));
+// app.use(
+//   cors({
+//     origin: "*",
+//   })
+// );
 
 // if (process.env.NODE_ENV.trim() === "production") {
 //   console.log("Confirmed");
