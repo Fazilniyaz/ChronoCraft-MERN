@@ -68,15 +68,15 @@ const Server = app.listen(PORT, () => {
 //   })
 // );
 
-// if (process.env.NODE_ENV.trim() === "production") {
-//   console.log("Confirmed");
-//   app.use(express.static(path.join(__dirname, "../frontend-common/build")));
-//   app.get("*", (req, res) => {
-//     res.sendFile(
-//       path.resolve(__dirname, "../frontend-common/build/index.html")
-//     );
-//   });
-// }
+if (process.env.NODE_ENV.trim() === "production") {
+  console.log("Confirmed");
+  app.use(express.static(path.join(__dirname, "../frontend-common/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, "../frontend-common/build/index.html")
+    );
+  });
+}
 
 process.on("unhandledRejection", (err) => {
   console.log(`Error : ${err.message}`);
