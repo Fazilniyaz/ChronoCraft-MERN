@@ -16,8 +16,8 @@ app.use("/api/v1", payment);
 app.use(
   cors({
     origin: [
-      "https://chronocrafts.xyz",
       "https://www.chronocrafts.xyz",
+      "https://chronocrafts.xyz",
       "http://localhost:5173",
       "http://localhost:3000",
       "http://chronocrafts.xyz",
