@@ -13,6 +13,21 @@ const payment = require("./routes/paymentRoutes");
 
 app.use("/api/v1", payment);
 
+app.use(
+  cors({
+    // origin: [
+    //   "https://chronocrafts.xyz",
+    //   "https://www.chronocrafts.xyz",
+    //   "http://localhost:5173",
+    //   "http://localhost:3000",
+    //   "http://chronocrafts.xyz",
+    // ],
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
+
 dotenv.config({ path: path.join(__dirname, "config/config.env") });
 
 // if (process.env.NODE_ENV.trim() === "production") {

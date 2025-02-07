@@ -17,13 +17,14 @@ const app = require("./app");
 // CORS Configuration
 app.use(
   cors({
-    origin: [
-      "https://chronocrafts.xyz",
-      "https://www.chronocrafts.xyz",
-      "http://localhost:5173",
-      "http://localhost:3000",
-      "http://chronocrafts.xyz",
-    ],
+    // origin: [
+    //   "https://chronocrafts.xyz",
+    //   "https://www.chronocrafts.xyz",
+    //   "http://localhost:5173",
+    //   "http://localhost:3000",
+    //   "http://chronocrafts.xyz",
+    // ],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
