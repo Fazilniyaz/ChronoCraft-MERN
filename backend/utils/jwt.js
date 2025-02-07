@@ -6,6 +6,8 @@ const sendToken = (user, statusCode, res) => {
       Date.now() + Number(process.env.COOKIE_EXPIRES_TIME) * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+    secure: true, // Ensure this is set for HTTPS
+    sameSite: "None", // Important for cross-origin requests
   };
 
   console.log(
