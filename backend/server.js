@@ -23,6 +23,7 @@ app.use(
       "http://localhost:5173",
       "http://localhost:3000",
       "http://chronocrafts.xyz",
+      "https://chrono-craft-mern-frontend-production.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
