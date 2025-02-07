@@ -15,14 +15,13 @@ app.use("/api/v1", payment);
 
 app.use(
   cors({
-    // origin: [
-    //   "https://chronocrafts.xyz",
-    //   "https://www.chronocrafts.xyz",
-    //   "http://localhost:5173",
-    //   "http://localhost:3000",
-    //   "http://chronocrafts.xyz",
-    // ],
-    origin: "*",
+    origin: [
+      "https://chronocrafts.xyz",
+      "https://www.chronocrafts.xyz",
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "http://chronocrafts.xyz",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
