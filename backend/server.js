@@ -18,8 +18,8 @@ const app = require("./app");
 app.use(
   cors({
     origin: [
-      "https://www.chronocrafts.xyz",
       "https://chronocrafts.xyz",
+      "https://www.chronocrafts.xyz",
       "http://localhost:5173",
       "http://localhost:3000",
       "http://chronocrafts.xyz",
