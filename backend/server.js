@@ -23,6 +23,7 @@ app.use(
       "http://localhost:5173",
       "http://localhost:3000",
       "http://chronocrafts.xyz",
+      "https://api.chronocrafts.xyz",
       "https://chrono-craft-mern-frontend-production.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
@@ -34,6 +35,7 @@ const products = require("./routes/productRoutes");
 const orders = require("./routes/orderRoutes");
 const address = require("./routes/addressRoutes");
 const cart = require("./routes/cartRoutes");
+const payment = require("./routes/paymentRoutes");
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // Serve static files
@@ -47,6 +49,7 @@ app.use("/api/v1", products);
 app.use("/api/v1", orders);
 app.use("/api/v1", address);
 app.use("/api/v1", cart);
+app.use("/api/v1", payment);
 
 const errorMiddleware = require("./middleware/error");
 app.use(errorMiddleware);

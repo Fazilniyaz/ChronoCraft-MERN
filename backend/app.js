@@ -9,9 +9,9 @@ console.log("App.js is being loaded");
 
 app.use(cookieParser());
 
-const payment = require("./routes/paymentRoutes");
+// const payment = require("./routes/paymentRoutes");
 
-app.use("/api/v1", payment);
+// app.use("/api/v1", payment);
 
 dotenv.config({ path: path.join(__dirname, "config/config.env") });
 
