@@ -9,13 +9,13 @@ const getAccessToken = async () => {
   try {
     const got = await fetchGot();
     const response = await got.default.post(
-      `${process.env.PAYPAL_BASEURL}/v1/oauth2/token`,
+      `${process.env.PAYPAL_BASEURL.trim()}/v1/oauth2/token`,
       {
         form: {
           grant_type: "client_credentials",
         },
-        username: process.env.PAYPAL_CLIENTID,
-        password: process.env.PAYPAL_SECRET,
+        username: process.env.PAYPAL_CLIENTID.trim(),
+        password: process.env.PAYPAL_SECRET.trim(),
       }
     );
 
@@ -26,7 +26,7 @@ const getAccessToken = async () => {
     return newAccessToken;
   } catch (err) {
     throw new Error(err);
-    new Errorhandler(`${err}`, 404);
+    new Errorhandler(`${err}`, 400);
   }
 };
 exports.createOrder = catchAsyncError(async (req, res, next) => {
@@ -38,7 +38,7 @@ exports.createOrder = catchAsyncError(async (req, res, next) => {
     const accessToken = await getAccessToken();
 
     const response = await got.default.post(
-      `${process.env.PAYPAL_BASEURL}/v2/checkout/orders`,
+      `${process.env.PAYPAL_BASEURL.trim()}/v2/checkout/orders`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -82,8 +82,8 @@ exports.createOrder = catchAsyncError(async (req, res, next) => {
                 shipping_preference: "NO_SHIPPING",
                 locale: "en-US",
                 user_action: "PAY_NOW",
-                return_url: `${process.env.PAYPAL_REDIRECT_BASE_URL}/order/success`,
-                cancel_url: `${process.env.PAYPAL_REDIRECT_BASE_URL}`,
+                return_url: `${process.env.PAYPAL_REDIRECT_BASE_URL.trim()}/order/success`,
+                cancel_url: `${process.env.PAYPAL_REDIRECT_BASE_URL.trim()}`,
               },
             },
           },
@@ -97,7 +97,7 @@ exports.createOrder = catchAsyncError(async (req, res, next) => {
       orderId,
     });
   } catch (err) {
-    new Errorhandler(`${err}`, 404);
+    new Errorhandler(`${err}`, 400);
     res.status(500).json({
       error: "Internal server error",
       details: err.message,
@@ -116,7 +116,7 @@ exports.capturePayment = catchAsyncError(async (req, res, next) => {
     const { paymentId } = req.params;
 
     const response = await got.default.post(
-      `${process.env.PAYPAL_BASEURL}/v2/checkout/orders/${paymentId}/capture`,
+      `${process.env.PAYPAL_BASEURL.trim()}/v2/checkout/orders/${paymentId}/capture`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -150,7 +150,7 @@ exports.capturePayment = catchAsyncError(async (req, res, next) => {
       },
     });
   } catch (err) {
-    new Errorhandler(`${err}`, 404);
+    new Errorhandler(`${err}`, 400);
 
     res.status(500).json({ error: "Internal server error." });
   }

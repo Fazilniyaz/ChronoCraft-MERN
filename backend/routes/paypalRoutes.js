@@ -9,7 +9,10 @@ const {
 
 const router = express.Router();
 
-router.post("/createorder", createOrder);
-router.get("/capturepayment/:paymentId", capturePayment);
+router.route("/capturepayment/:paymentId").get(capturePayment);
+router.route("/createorder").post(createOrder);
+
+// router.post("/createorder", createOrder);
+// router.get("/capturepayment/:paymentId", capturePayment);
 
 module.exports = router;
