@@ -36,6 +36,7 @@ const orders = require("./routes/orderRoutes");
 const address = require("./routes/addressRoutes");
 const cart = require("./routes/cartRoutes");
 const payment = require("./routes/paymentRoutes");
+const paypal = require("./routes/paypalRoutes");
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // Serve static files
@@ -50,6 +51,7 @@ app.use("/api/v1", orders);
 app.use("/api/v1", address);
 app.use("/api/v1", cart);
 app.use("/api/v1", payment);
+app.use("/paypal", paypal);
 
 const errorMiddleware = require("./middleware/error");
 app.use(errorMiddleware);
